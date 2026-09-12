@@ -31,7 +31,7 @@ Repository ini siap langsung dideploy di Railway:
   "status": "online",
   "service": "OnlyFaucet Motion Signature Captcha Solver",
   "version": "2.0-RankNet",
-  "accuracy": "100% (34/34)"
+  "accuracy": "100% (234/234)"
 }
 ```
 
