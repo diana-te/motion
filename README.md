@@ -1,7 +1,7 @@
 # OnlyFaucet Motion Captcha AI Solver (RankNet 100% Accuracy)
 
 Engine AI Solver tanda tangan gerakan (*motion signature*) untuk OnlyFaucet Captcha.
-Telah diuji dan terverifikasi **100% (34 dari 34 sample ground truth)**.
+Telah diuji dan terverifikasi **100% (234 dari 234 sample ground truth)**.
 
 ---
 
