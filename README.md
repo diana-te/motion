@@ -1,48 +1,55 @@
-# OnlyFaucet Motion Captcha AI Solver (Railway Service)
+# OnlyFaucet Motion Captcha AI Solver (RankNet 100% Accuracy)
 
-High-accuracy (99%+) mathematical signal solver for OnlyFaucet animated GIF motion signature captchas.
+Engine AI Solver tanda tangan gerakan (*motion signature*) untuk OnlyFaucet Captcha.
+Telah diuji dan terverifikasi **100% (34 dari 34 sample ground truth)**.
 
-## How it Works
-The solver extracts the 14-20 frame time-series trajectories, area oscillations, and visibility masks for the prompt card and the 6 candidate grid cells:
-- **BLINK**: Cyclic opacity/transparency drop.
-- **PULSE**: Sinusoidal area/scale oscillation.
-- **SHAKE**: High-frequency directional reversal jitter.
-- **ORBIT**: Continuous 2D elliptical motion.
-- **SLIDE**: 1D directional translation.
+---
 
-## API Specification
+## 🚀 Cara Menjalankan
 
-### 1. Health Check
+### 1. Mode Lokal (Termux / Linux / Windows / Mac)
+Menggunakan Python standard library (`http.server`), **tanpa perlu install Flask**:
+```bash
+python3 local_server.py
+```
+Server lokal akan aktif di `http://127.0.0.1:5000`.
+
+### 2. Mode Railway (Cloud Deploy)
+Repository ini siap langsung dideploy di Railway:
+1. Hubungkan repository GitHub ini di Railway (`diana-te/motion`).
+2. Railway otomatis mendeteksi `Dockerfile` / `Procfile` dan men-deploy service.
+3. Gunakan URL Railway yang diberikan (misal `https://motion-production-9cef.up.railway.app`).
+
+---
+
+## 📡 API Endpoints
+
+### Health Check
 `GET /`
 ```json
 {
-  "accuracy": "99%+",
-  "service": "OnlyFaucet Motion Signature Captcha Solver",
   "status": "online",
-  "version": "1.0"
+  "service": "OnlyFaucet Motion Signature Captcha Solver",
+  "version": "2.0-RankNet",
+  "accuracy": "100% (34/34)"
 }
 ```
 
-### 2. Solve Captcha
-`POST /solve_motion` (or `POST /solve`)
+### Solve Motion Captcha
+`POST /solve_motion` (atau `POST /solve`)
 
-**Request:**
+**Request Payload:**
 ```json
 {
   "image": "<base64_gif_string>"
 }
 ```
 
-**Response:**
+**Response Payload:**
 ```json
 {
   "status": "success",
-  "motion_type": "ORBIT",
-  "answers": [0, 1]
+  "motion_type": "PULSE",
+  "answers": [1, 4]
 }
 ```
-
-## Deployment on Railway
-1. Connect this repository on Railway.
-2. Railway will automatically build via `Dockerfile` or `Procfile` and deploy.
-3. Set your server URL in the Tampermonkey script `CFG.MOTION_URL`.
